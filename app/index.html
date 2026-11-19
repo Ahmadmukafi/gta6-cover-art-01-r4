@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VICE GRID — GTA VI Cover Maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VG</span>
+    <span class="brand-name">VICE GRID</span>
+    <span class="brand-sub">GTA VI cover maker · Leonida 2026</span>
+  </div>
+  <div class="top-actions">
+    <label class="btn" for="uploadInput">Add your photo</label>
+    <input id="uploadInput" type="file" accept="image/*" hidden>
+    <button class="btn btn-primary" id="exportBtn" type="button">Export PNG</button>
+  </div>
+</header>
+
+<main class="workspace">
+  <section class="stage-col">
+    <div id="cover" class="cover layout-grid look-sunset" data-grade="30">
+      <figure class="panel" data-slot="0" draggable="true">
+        <img class="panel-img" alt="Cover panel 1" draggable="false">
+        <figcaption class="panel-cap"><span class="cap-title"></span></figcaption>
+      </figure>
+      <figure class="panel" data-slot="1" draggable="true">
+        <img class="panel-img" alt="Cover panel 2" draggable="false">
+        <figcaption class="panel-cap"><span class="cap-title"></span></figcaption>
+      </figure>
+      <figure class="panel" data-slot="2" draggable="true">
+        <img class="panel-img" alt="Cover panel 3" draggable="false">
+        <figcaption class="panel-cap"><span class="cap-title"></span></figcaption>
+      </figure>
+      <figure class="panel" data-slot="3" draggable="true">
+        <img class="panel-img" alt="Cover panel 4" draggable="false">
+        <figcaption class="panel-cap"><span class="cap-title"></span></figcaption>
+      </figure>
+      <div class="cover-title">
+        <span id="coverTitle">SUNSET HEIST</span>
+        <span id="coverSub">LEONIDA · 2026</span>
+      </div>
+    </div>
+    <p class="stage-note">Drag panels to swap photos · Pan mode: drag inside a photo to reframe · Scroll over a photo to zoom</p>
+    <p class="stage-note">Keyboard: 1–4 switch layouts · L cycles looks · E exports the PNG</p>
+  </section>
+
+  <aside class="controls">
+    <section class="ctl-group">
+      <h2>Photos</h2>
+      <div class="filmstrip" id="filmstrip">
+        <button type="button" class="thumb is-active" data-photo="boulevard">
+          <img src="samples/boulevard.jpg" alt="Boulevard sample">
+          <span>Boulevard</span>
+        </button>
+        <button type="button" class="thumb" data-photo="pier">
+          <img src="samples/pier.jpg" alt="Pier sample">
+          <span>Pier</span>
+        </button>
+      </div>
+      <p class="ctl-note">Click a sample, then click a panel to place it. Your uploads join the strip.</p>
+    </section>
+
+    <section class="ctl-group">
+      <h2>Look</h2>
+      <div class="btn-row" id="lookRow">
+        <button type="button" class="btn is-active" data-look="sunset">Sunset Strip</button>
+        <button type="button" class="btn" data-look="neon">Neon Night</button>
+        <button type="button" class="btn" data-look="heat">Heat Wave</button>
+      </div>
+      <label class="slider-label" for="gradeRange">
+        Grade <span id="gradeVal">Golden hour</span>
+      </label>
+      <input id="gradeRange" type="range" min="0" max="100" value="30" step="1">
+      <div class="slider-ends"><span>Golden hour</span><span>Neon night</span></div>
+    </section>
+
+    <section class="ctl-group">
+      <h2>Layout</h2>
+      <div class="btn-row" id="layoutRow">
+        <button type="button" class="btn is-active" data-layout="grid">2 × 2 Grid</button>
+        <button type="button" class="btn" data-layout="hero">Hero + 3</button>
+        <button type="button" class="btn" data-layout="columns">Columns</button>
+        <button type="button" class="btn" data-layout="single">Single</button>
+      </div>
+    </section>
+
+    <section class="ctl-group">
+      <h2>Caption</h2>
+      <label class="field-label" for="titleInput">Title</label>
+      <input id="titleInput" type="text" value="SUNSET HEIST" maxlength="24">
+      <label class="field-label" for="subInput">Subtitle</label>
+      <input id="subInput" type="text" value="LEONIDA · 2026" maxlength="32">
+    </section>
+
+    <section class="ctl-group">
+      <h2>Export</h2>
+      <label class="field-label" for="sizeSelect">Size</label>
+      <select id="sizeSelect">
+        <option value="1080x1080" selected>1080 × 1080 — square post</option>
+        <option value="1080x1350">1080 × 1350 — portrait post</option>
+        <option value="1920x1080">1920 × 1080 — wide banner</option>
+      </select>
+      <p class="ctl-note">Exports a PNG of the cover exactly as staged, grade and caption included.</p>
+    </section>
+  </aside>
+</main>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
